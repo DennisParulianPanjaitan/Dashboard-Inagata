@@ -11,12 +11,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>    
   </head>
-
   <body class="bg-gray-100 font-sans h-screen overflow-hidden">
-    <div class="flex h-full">
-      <!-- Sidebar -->
-      <aside class="w-56 bg-white shadow-md flex flex-col justify-between border-r border-gray-200">
-        <div class="flex flex-col items-center flex-1">
+    <class class="flex h-full">
+
+
+
+<!-- Overlay (untuk klik luar sidebar) -->
+<div id="overlay"
+     onclick="closeSidebar()"
+     class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden">
+</div>
+
+<!-- Sidebar -->
+<aside id="sidebar"
+  class="fixed top-0 left-0 z-40 h-full w-56 bg-white shadow-md border-r border-gray-200 transform transition-transform duration-300 
+         -translate-x-full md:translate-x-0 md:static md:block">
+  <div class="flex flex-col items-center flex-1">
           <!-- Logo -->
           <div class="flex items-center gap-3 mb-5 pt-7">
             <img src="assets/icons/logo.svg" alt="Logo" class="w-10 h-10" />
@@ -62,7 +72,7 @@
   <a href="#" class="flex items-center w-full text-lg pt-[] font-semibold text-blue-600">
     <img src="assets/icons/active.svg" alt="Dashboard Active" class="width: 50px; height: 10px " />
     <img src="assets/icons/settingsactive.svg" alt="Loans" class="width: 50px; height:10px ml-[25px]" />
-    <span class="pl-6 font-semibold">Settings</span>
+    <span class="pl-6 font-normal">Settings</span>
   </a>
 </nav>
 
@@ -73,6 +83,9 @@
       <div class="flex-1 flex flex-col overflow-hidden">
         <!-- Header -->
         <header class="sticky top-0 z-10 bg-white px-6 py-6 flex items-center justify-between shadow-sm">
+          <button onclick="toggleSidebar()" class="md:hidden p-3">
+            <img src="assets/icons/sidebar.svg" class="w-6 h-6" alt="Menu" />
+            </button>
           <h2 class="text-2xl text-[#343C6A] font-bold">Setting</h2>
           <div class="flex items-center gap-4">
             <!-- Search -->
@@ -376,5 +389,36 @@
   }
 </script>
 
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("-translate-x-full");
+  }
+</script>
+
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    const isOpen = !sidebar.classList.contains("-translate-x-full");
+
+    if (isOpen) {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    } else {
+      sidebar.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    }
+  }
+
+  function closeSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  }
+</script>
 
 </html>
