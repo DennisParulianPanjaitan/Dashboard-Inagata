@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>    
+  </head>
+  <body class="bg-gray-100 font-sans h-screen overflow-hidden">
+    <div class="flex h-full">
+      <!-- Sidebar -->
+      <aside class="w-56 bg-white shadow-md flex flex-col justify-between border-r border-gray-200">
+        <div class="flex flex-col items-center flex-1">
+          <!-- Logo -->
+          <div class="flex items-center gap-3 mb-5 pt-7">
+            <img src="assets/icons/logo.svg" alt="Logo" class="w-10 h-10" />
+            <img src="assets/icons/Bankku.svg" alt="Bankku" class="w-28 h-10" />
+          </div>
+
+          <!-- Navigation Menu -->
+<nav class="w-full space-y-4 overflow-y-auto">
+  <a href="/index.html" class="flex items-center w-full text-blue-600 font-semibold text-lg pt-4">
+    <img src="assets/icons/active.svg" alt="Dashboard Active" class="width: 50px; height: 10px" />
+    <img src="assets/icons/dashboard.svg" alt="Dashboard" class="w-6 h-6 ml-7" />
+    <span span class="ml-5">Dashboard</span>
+  </a>
+
+  <a href="#" class="flex items-center w-full text-gray-600 text-lg">
+    <img src="assets/icons/transaction.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
+    <span class="ml-5 font-normal text-[#B1B1B1]">Transactions</span>
+  </a>
+
+  <a href="#" class="flex items-center w-full text-gray-600 text-lg pt-2">
+    <img src="assets/icons/accounts.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
+    <span class="pl-6 font-normal text-[#B1B1B1]">Accounts</span>
+  </a>
+  <a href="#" class="flex items-center w-full text-gray-600 text-lg pt-2">
+    <img src="assets/icons/inestment.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
+    <span class="pl-6 font-normal text-[#B1B1B1]">Investments</span>
+  </a>
+  <a href="#" class="flex items-center w-full text-gray-600 text-lg pt-2">
+    <img src="assets/icons/credit-card.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
+    <span class="pl-6 font-normal text-[#B1B1B1]">Credit Cards</span>
+  </a>
+  <a href="/loans.html" class="flex items-center w-full text-gray-600 text-lg pt-2">
+    <img src="assets/icons/loans.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
+    <span class="pl-6 font-normal text-[#B1B1B1]">Loans</span>
+  </a>
+  <a href="#" class="flex items-center w-full text-gray-600 text-lg pt-2">
+    <img src="assets/icons/services.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
+    <span class="pl-6 font-normal text-[#B1B1B1]">Services</span>
+  </a>
+  <a href="#" class="flex items-center w-full text-gray-600 text-lg pt-2">
+    <img src="assets/icons/my-privilages.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
+    <span class="pl-6 font-normal text-[#B1B1B1]">My Privilages</span>
+  </a>
+  <a href="settings.html" class="flex items-center w-full text-gray-600 text-lg pt-2">
+    <img src="assets/icons/settingskanan.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
+    <span class="pl-[28px] font-normal text-[#B1B1B1]">Settings</span>
+  </a>
+</nav>
+
+        </div>
+      </aside>
+
+    <div class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-10 bg-white px-6 py-6 flex items-center justify-between shadow-sm">
+  <!-- Judul -->
+  <h2 class="text-2xl text-[#343C6A] font-bold">Overview</h2>
+
+  <!-- Search & Icons Group -->
+  <div class="flex items-center gap-4">
+    <!-- Search -->
+    <div class="relative w-64">
+      <img
+        src="assets/icons/search.svg"
+        class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+        alt="Search"
+      />
+      <input
+        type="text"
+        placeholder="Search for something"
+        class="w-full pl-10 pr-4 py-2 rounded-full border bg-[#F5F7FA] border-gray-300 placeholder-[#8BA3CB] focus:outline-none focus:ring-0 focus:shadow-none"
+      />
+    </div>
+
+<!-- Settings Icon -->
+<button class="p-2 rounded-full bg-[#F5F7FA] hover:bg-gray-200">
+  <img src="assets/icons/setting.svg" class="w-5 h-5" alt="Settings" />
+</button>
+
+<!-- Notification Icon -->
+<button class="p-2 rounded-full bg-[#F5F7FA] hover:bg-gray-200">
+  <img src="assets/icons/notification.svg" class="w-5 h-5" alt="Notifications" />
+</button>
+
+    <!-- Profile Image -->
+    <img
+      src="assets/images/profileatas.svg"
+      class="w-8 h-8 rounded-full border-2 border-white shadow-sm"
+      alt="Profile"
+    />
+  </div>
+</header>
+
+
+
+<main class="flex-1 overflow-y-auto  h-[calc(100vh-4rem)]">
+<!-- My Cards Section -->
+<div class="grid grid-cols-12 gap-4 items-stretch">
+<section class="col-span-12 lg:col-span-8 p-4 h-full">
+        <div class="flex justify-between items-center mb-4">
+    <h3 class="text-xl font-bold text-[#343C6A]">My Cards</h3>
+<button class="text-lg font-semibold text-[#343C6A] hover:underline">See All</button>
+  </div>
+        <div class="grid grid-cols sm:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<div class="bg-[#4C49ED] text-white p-6 rounded-2xl shadow-lg relative overflow-hidden">
+  <div class="flex justify-between items-start">
+    <div>
+      <p class="text-sm">Balance</p>
+      <p class="text-3xl font-semibold">$5,756</p>
+    </div>
+    <!-- Chip Icon (Simulasi) -->
+ <!-- Chip Icon as Image -->
+<div class="w-10 h-8">
+  <img
+    src="assets/icons/Chip_Card.svg"
+    alt="Chip Icon"
+    class="w-full h-full object-contain"
+  />
+</div>
+  </div>
+
+  <div class="mt-6 grid grid-cols-2 gap-4 text-sm">
+    <div>
+      <p class="uppercase text-xs tracking-wide">Card Holder</p>
+      <p class="font-semibold">Eddy Cusuma</p>
+    </div>
+    <div>
+      <p class="uppercase text-xs tracking-wide">Valid Thru</p>
+      <p>12/22</p>
+    </div>
+  </div>
+<!-- Divider full width -->
+<div class="-mx-6 my-4 border-t border-white border-opacity-30"></div>
+
+  <div class="mt-6 text-lg tracking-widest font-mono">
+    3778 **** **** 1234
+  </div>
+
+</div>
+
+                
+<!-- Card 2 -->
+<div class="bg-white p-6 rounded-2xl shadow-lg relative overflow-hidden border" style="border-color: #DFEAF2; border-width: 1px;">
+  <div class="flex justify-between items-start">
+    <div>
+      <p class="text-sm text-gray-500">Balance</p>
+      <p class="text-3xl font-bold text-gray-800">$5,756</p>
+    </div>
+    <!-- Chip Icon -->
+    <div class="w-10 h-8">
+      <img
+        src="assets/icons/Chip_Cardblack.svg"
+        alt="Chip Icon"
+        class="w-full h-full object-contain"
+      />
+    </div>
+  </div>
+
+  <div class="mt-6 grid grid-cols-2 gap-4 text-sm">
+    <div>
+      <p class="uppercase text-xs tracking-wide text-gray-500">Card Holder</p>
+      <p class="font-semibold text-gray-800">Eddy Cusuma</p>
+    </div>
+    <div>
+      <p class="uppercase text-xs tracking-wide text-gray-500">Valid Thru</p>
+      <p class="text-gray-800">12/22</p>
+    </div>
+  </div>
+
+  <div class="-mx-6 my-4 border-t" style="border-top: 1px solid #DFEAF2;"></div>
+
+  <div class="mt-6 text-lg tracking-widest font-mono text-gray-800">
+    3778 **** **** 1234
+  </div>
+</div>
+                </section>
+                
+                <!-- Recent Transactions -->
+<section class="col-span-12 lg:col-span-4 p-4 h-full">
+    <h3 class="text-xl font-bold text-[#343C6A] mb-4">Recent Transactions</h3>
+  <div class="bg-white rounded-xl p-4 shadow-md space-y-7">
+    
+    <!-- Item 1 -->
+    <div class="flex items-center space-x-4">
+      <div class="bg-[#FFF5D9] p-3 rounded-full">
+        <!-- Ganti dengan ikon sesuai kebutuhan -->
+ <img src="assets/icons/wallet.svg" alt="My Logo" class="w-6 h-6" />
+
+      </div>
+      <div class="flex-1">
+        <p class="font-medium text-gray-800">Deposit from my</p>
+        <p class="text-sm  text-[#718EBF]">28 January 2021</p>
+      </div>
+      <div class="text-red-500 font-semibold text-sm">- $850</div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="flex items-center space-x-4">
+      <div class="bg-[#E7EDFF] p-3 rounded-full">
+ <img src="assets/icons/paypal.svg" alt="My Logo" class="w-6 h-6" />
+
+      </div>
+      <div class="flex-1">
+        <p class="font-medium text-gray-800">Deposit Paypal</p>
+        <p class="text-sm text-[#718EBF]">25 January 2021</p>
+      </div>
+      <div class="text-green-500 font-semibold text-sm">+ $2,500</div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="flex items-center space-x-4">
+      <div class="bg-[#DCFAF8] p-3 rounded-full">
+  <img src="assets/icons/iconfinder.svg" alt="My Logo" class="w-6 h-6" />
+
+      </div>
+      <div class="flex-1">
+        <p class="font-medium text-gray-800">Jemi Wilson</p>
+        <p class="text-sm text-[#718EBF]">21 January 2021</p>
+      </div>
+      <div class="text-green-500 font-semibold text-sm">+ $5,400</div>
+    </div>
+
+  </div>
+</section>
+
+                
+            </div>
+
+<!-- Middle Grid: Weekly Activity + Expense Statistics -->
+<div class="grid grid-cols-12 gap-6 items-stretch">
+  <!-- Weekly Activity (lebar 8 kolom) -->
+  <div class="col-span-12 lg:col-span-8 ml-6 mb-4 flex flex-col">
+    <h3 class="text-xl font-bold text-[#343C6A] mb-2">Weekly Activity</h3>
+    <section class="pr-4 bg-white rounded-xl shadow-md h-full flex-1">
+      <div class="flex justify-between items-start mb-4"></div>
+      <div class="relative w-full h-[400px]">
+        <canvas id="weeklyActivityChart" class="w-full mb-8"></canvas>
+      </div>
+    </section>
+  </div>
+
+  <!-- Expense Statistics (lebar 4 kolom) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col">
+  <h3 class="text-xl font-bold text-[#343C6A] mb-2">Expense Statistics</h3>
+  <section class="p-6 bg-white rounded-xl shadow-md h-full flex-1">
+   
+<div class="flex flex-1 justify-center items-start mt-4">
+<div class="relative w-[22rem] h-[22rem]">
+    <canvas id="expensePieChart"></canvas>
+  </div>
+</div>
+
+ 
+  </section>
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="grid grid-cols-[600px_1fr] gap-6 h-[400px]">
+<!-- Quick Transfer -->
+<section class="p-6 flex flex-col h-full">
+  <h3 class="text-xl font-bold text-[#343C6A] mb-4">Quick Transfer</h3>
+
+  <!-- Kotak putih utama (relative) -->
+  <div class="relative bg-white rounded-xl p-4 shadow-md flex flex-col gap-4 h-full">
+
+    <!-- Konten utama -->
+    <div class="flex gap-10 translate-x-8 translate-y-5">
+      <!-- Group 1 -->
+      <div class="flex flex-col items-center w-[100px]">
+        <img src="assets/images/profile1.jpg" class="w-[100px] h-[100px] rounded-full object-cover mb-3" />
+        <p class="text-lg font-semibold text-gray-800 leading-tight">Livia Bator</p>
+        <p class="text-base text-[#718EBF]">CEO</p>
+      </div>
+      <!-- Group 2 -->
+      <div class="flex flex-col items-center w-[100px]">
+        <img src="assets/images/profile2.jpg" class="w-[100px] h-[100px] rounded-full object-cover mb-3" />
+        <p class="text-lg font-semibold text-gray-800 leading-tight">Randy Press</p>
+        <p class="text-base text-[#718EBF]">Director</p>
+      </div>
+      <!-- Group 3 -->
+      <div class="flex flex-col items-center w-[100px]">
+        <img src="assets/images/profile3.jpg" class="w-[100px] h-[100px] rounded-full object-cover mb-3" />
+        <p class="text-lg font-semibold text-gray-800 leading-tight">Director</p>
+        <p class="text-base text-[#718EBF]">Designer</p>
+      </div>
+    </div>
+
+<!-- Container keseluruhan -->
+<div class="relative w-[300px] mt-10 translate-x-[200px]">
+  <!-- Label di luar kotak, bagian kiri -->
+<p class="absolute -left-40 top-1/2 -translate-y-1/2 text-[#718EBF] text-base">
+  Write Amount
+</p>
+
+
+  <!-- Input Amount -->
+  <input
+    type="number"
+    placeholder="0"
+    class="w-full h-[60px] rounded-full bg-[#EDF1F7] text-[#718EBF] text-left pl-12 text-xl outline-none pr-[90px]"
+  />
+
+  <!-- Tombol Send -->
+  <button class="absolute top-0 right-0 -translate-x-2 w-[150px] h-[60px] rounded-full bg-[#1814F3] text-white flex items-center justify-center gap-2 shadow-md">
+    <span class="text-sm font-mono">Send</span>
+    <img src="assets/icons/pesawat.svg" alt="Send Icon" class="w-5 h-5" />
+  </button>
+</div>
+
+
+
+
+    <!-- Tombol ikon di kanan atas -->
+    <div class="absolute top-[60px] right-[24px]  w-[80px] h-[80px] flex items-center justify-center rounded-full bg-white"
+         style="box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1), -2px -2px 6px rgba(0, 0, 0, 0.05);">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="#718EBF">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- Balance History -->
+<section class="p-6 flex flex-col h-full">
+  <h3 class="text-xl font-bold text-[#343C6A] mb-4">Balance History</h3>
+  <div class="bg-white rounded-xl p-4 shadow-md flex-1">
+      <canvas id="balanceChart" height="100"></canvas>
+  </div>
+</section>
+
+</div>
+
+</main>
+
+      </main>
+    </div>
+  </body>
+
+  <!-- CHART WEEKLY -->
+  <script>
+const config = {
+  type: 'bar',
+  data: {
+    labels: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    datasets: [
+      {
+        label: 'Withdraw',
+        backgroundColor: '#1814F3',
+        data: [480, 340, 330, 470, 130, 390, 380],
+        borderRadius: 5,
+        barThickness: 18,
+     categoryPercentage: 0.6, // ✅ Lebar total 1 grup kategori
+        barPercentage: 0.4      // Lebar kategori secara keseluruhan
+
+      },
+      {
+        label: 'Deposit',
+        backgroundColor: '#16DBCC',
+        data: [260, 100, 270, 360, 210, 240, 310],
+        borderRadius: 5,
+        barThickness: 18,
+        categoryPercentage: 0.6,
+        barPercentage: 0.4,
+      },
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 20,
+        right: 10,
+        top: 10,
+        bottom: 0
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 100,
+          color: '#718EBF',
+          font: {
+            size: 12
+          }
+        },
+        grid: {
+          color: '#EDF1F9',
+          drawBorder: false,
+        }
+      },
+      x: {
+        ticks: {
+          color: '#718EBF',
+          font: {
+            size: 12
+          }
+        },
+        grid: {
+          display: false,
+          drawBorder: false,
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+        align: 'end',
+        labels: {
+          usePointStyle: true,
+          pointStyle: 'circle',
+          color: '#718EBF',
+          font: {
+            size: 14
+          },
+          boxWidth: 8,
+          generateLabels: (chart) => {
+            const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+            labels.forEach(label => {
+              if (label.text === 'Withdraw') label.fillStyle = '#FF82AC';  // Pink
+              if (label.text === 'Deposit') label.fillStyle = '#16DBCC';   // Biru Muda
+            });
+            return labels;
+          }
+        }
+      }
+    }
+  }
+};
+
+new Chart(document.getElementById('weeklyActivityChart'), config);
+
+</script>
+
+
+        <!-- CHART EXPENSE -->
+<script>
+  const ctx = document.getElementById('expensePieChart').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Entertainment', 'Bill Expense', 'Investment', 'Others'],
+      datasets: [{
+        data: [30, 15, 20, 35],
+        backgroundColor: ['#2f365f', '#f97316', '#ff00ff', '#1d4ed8'],
+        borderWidth: 6,
+        borderColor: '#ffffff'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        datalabels: {
+          color: '#fff',
+          font: {
+            weight: 'bold',
+            size: 12
+          },
+          anchor: 'center',  // posisi relatif terhadap arc
+          align: 'center',   // posisi relatif terhadap radius
+          offset: 500,         // ubah nilai ini untuk geser label
+          formatter: (value, context) => {
+            const label = context.chart.data.labels[context.dataIndex];
+            return `${value}%\n${label}`;
+          }
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+</script>
+
+<script>
+const balanceCtx = document.getElementById('balanceChart').getContext('2d');
+new Chart(balanceCtx, {
+  type: 'line',
+  data: {
+    labels: ['July', 'August', 'September', 'October', 'November', 'December', 'January'],
+    datasets: [{
+      label: 'Balance',
+      data: [100, 300, 200, 400, 350, 500, 450],
+      borderColor: '#1814F3',
+      backgroundColor: 'rgba(24, 20, 243, 0.1)',
+      tension: 0.4,
+      fill: true,
+      pointBackgroundColor: '#1814F3',
+      pointBorderColor: '#1814F3',
+      pointRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 200
+        }
+      }
+    }
+  }
+});
+
+</script>
+
+
+</html>
