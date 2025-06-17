@@ -19,9 +19,9 @@
 ![Loans Screenshot](./assets/screenshots/loans.png)
 
 ### Profile Settings
-![Settings Screenshot](./assets/screenshots/settings1.png)
-![Settings Screenshot](./assets/screenshots/settings2.png)
-![Settings Screenshot](./assets/screenshots/settings3.png)
+![Settings Screenshot](./assets/screenshoot/settings1.png)
+![Settings Screenshot](./assets/screenshoot/settings2.png)
+![Settings Screenshot](./assets/screenshoot/settings3.png)
 
 ---
 
