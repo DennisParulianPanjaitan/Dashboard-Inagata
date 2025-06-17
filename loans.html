@@ -12,12 +12,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>    
   </head>
+  <body class="bg-gray-100 font-sans h-screen overflow-hidden">
+    <class class="flex h-full">
 
-<body class="bg-gray-100 font-sans min-h-screen overflow-x-auto">
-    <div class="flex h-full">
-      <!-- Sidebar -->
-      <aside class="w-56 bg-white shadow-md flex flex-col justify-between border-r border-gray-200">
-        <div class="flex flex-col items-center flex-1">
+
+
+<!-- Overlay (untuk klik luar sidebar) -->
+<div id="overlay"
+     onclick="closeSidebar()"
+     class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden">
+</div>
+
+<!-- Sidebar -->
+<aside id="sidebar"
+  class="fixed top-0 left-0 z-40 h-full w-56 bg-white shadow-md border-r border-gray-200 transform transition-transform duration-300 
+         -translate-x-full md:translate-x-0 md:static md:block">
+  <div class="flex flex-col items-center flex-1">
           <!-- Logo -->
           <div class="flex items-center gap-3 mb-5 pt-7">
             <img src="assets/icons/logo.svg" alt="Logo" class="w-10 h-10" />
@@ -48,12 +58,12 @@
     <img src="assets/icons/credit-card.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
     <span class="pl-6 font-normal text-[#B1B1B1]">Credit Cards</span>
   </a>
-  <a href="#" class="flex items-center w-full text-lg pt-[] font-semibold text-blue-600">
+  <a href="/loans.html" class="flex items-center w-full text-gray-600 text-lg">
     <img src="assets/icons/active.svg" alt="Dashboard Active" class="width: 50px; height: 10px " />
-    <img src="assets/icons/loansactive.svg" alt="Loans" class="width: 50px; height:10px ml-[27px]" />
-    <span class="pl-6 text-semibold">Loans</span>
+    <img src="assets/icons/loansactive.svg" alt="Loans" class="width: 50px; height:10px pl-[18px] ml-3" />
+    <span span class="ml-5 font-semibold text-[#2D60FF]">Loans</span>
   </a>
-  <a href="#" class="flex items-center w-full text-gray-600 text-lg ">
+  <a href="#" class="flex items-center w-full text-gray-600 text-lg pt-2">
     <img src="assets/icons/services.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
     <span class="pl-6 font-normal text-[#B1B1B1]">Services</span>
   </a>
@@ -61,9 +71,9 @@
     <img src="assets/icons/my-privilages.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
     <span class="pl-6 font-normal text-[#B1B1B1]">My Privilages</span>
   </a>
-  <a href="settings.html" class="flex items-center w-full text-gray-600 text-lg pt-2">
+ <a href="/settings.html" class="flex items-center w-full text-gray-600 text-lg pt-2">
     <img src="assets/icons/settingskanan.svg" alt="Loans" class="width: 50px; height:10px pl-5 ml-3" />
-    <span class="pl-[28px] font-normal text-[#B1B1B1]">Settings</span>
+    <span class="pl-[30px] font-normal text-[#B1B1B1]">Settings</span>
   </a>
 </nav>
 
@@ -72,30 +82,55 @@
 
       <!-- Konten Utama -->
       <div class="flex-1 flex flex-col overflow-hidden">
-        <!-- Header -->
-        <header class="sticky top-0 z-10 bg-white px-6 py-6 flex items-center justify-between shadow-sm">
-          <h2 class="text-2xl text-[#343C6A] font-bold">Loans</h2>
-          <div class="flex items-center gap-4">
-            <!-- Search -->
-            <div class="relative w-64">
-              <img src="assets/icons/search.svg" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" alt="Search"/>
-              <input type="text" placeholder="Search for something" class="w-full pl-10 pr-4 py-2 rounded-full border bg-[#F5F7FA] border-gray-300 placeholder-[#8BA3CB] focus:outline-none"/>
-            </div>
-            <!-- Icons -->
-            <button class="p-2 rounded-full bg-[#F5F7FA] hover:bg-gray-200">
-              <img src="assets/icons/setting.svg" class="w-5 h-5" alt="Settings" />
-            </button>
-            <button class="p-2 rounded-full bg-[#F5F7FA] hover:bg-gray-200">
-              <img src="assets/icons/notification.svg" class="w-5 h-5" alt="Notifications" />
-            </button>
-            <img src="assets/images/profileatas.svg" class="w-8 h-8 rounded-full border-2 border-white shadow-sm" alt="Profile"/>
-          </div>
-        </header>
+<!-- Header -->
+<header class="sticky top-0 z-10 bg-white px-6 py-6 flex flex-col gap-4 shadow-sm">
+  
+  <!-- Row Atas -->
+  <div class="flex items-center justify-between md:justify-between">
+    <!-- Burger Button (mobile only) -->
+    <button onclick="toggleSidebar()" class="md:hidden p-3">
+      <img src="assets/icons/sidebar.svg" class="w-6 h-6" alt="Menu" />
+    </button>
 
-<main class="p-6">
-  <div class="flex flex-wrap justify-center gap-12 mt-2 px-4">
+    <!-- Title -->
+    <h2 class="text-xl font-bold text-[#343C6A] absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:text-2xl">
+      Setting
+    </h2>
+
+    <!-- Right Icons -->
+    <div class="flex items-center gap-4 ml-auto">
+      <!-- Search (desktop only) -->
+      <div class="relative hidden md:block w-64">
+        <img src="assets/icons/search.svg" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" alt="Search" />
+        <input type="text" placeholder="Search for something" class="w-full pl-10 pr-4 py-2 rounded-full border bg-[#F5F7FA] border-gray-300 placeholder-[#8BA3CB] focus:outline-none" />
+      </div>
+      <!-- Icons (desktop only) -->
+      <button class="hidden md:block p-2 rounded-full bg-[#F5F7FA] hover:bg-gray-200">
+        <img src="assets/icons/setting.svg" class="w-5 h-5" alt="Settings" />
+      </button>
+      <button class="hidden md:block p-2 rounded-full bg-[#F5F7FA] hover:bg-gray-200">
+        <img src="assets/icons/notification.svg" class="w-5 h-5" alt="Notifications" />
+      </button>
+      <!-- Profile -->
+      <img src="assets/images/profileatas.svg" class="w-8 h-8 rounded-full border-2 border-white shadow-sm" alt="Profile" />
+    </div>
+  </div>
+
+  <!-- Row Bawah (mobile only) -->
+  <div class="relative w-full md:hidden">
+    <img src="assets/icons/search.svg" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" alt="Search" />
+    <input type="text" placeholder="Search for something" class="w-full pl-10 pr-4 py-2 rounded-full border bg-[#F5F7FA] border-gray-300 placeholder-[#8BA3CB] focus:outline-none" />
+  </div>
+
+</header>
+
+<main class="p-6 overflow-y-auto flex-1">
+<!-- Container Scrollable -->
+<div class="overflow-x-auto lg:overflow-visible h-[160px]">
+  <div class="flex lg:flex-wrap gap-[60px] px-4 mt-2 w-max lg:w-full">
+    
     <!-- Kotak 1 -->
-    <div class="w-full sm:w-[50%] lg:w-[22%] bg-white rounded-[20px] shadow-md">
+    <div class="min-w-[250px] sm:min-w-[280px] lg:w-[22%] bg-white rounded-[20px]">
       <div class="flex items-center gap-4 p-6 rounded-xl mt-2">
         <div class="w-24 h-24 bg-[#E7EDFF] rounded-full flex items-center justify-center">
           <img src="assets/icons/loans1.svg" alt="icon" class="w-12 h-12" />
@@ -108,20 +143,20 @@
     </div>
 
     <!-- Kotak 2 -->
-    <div class="w-full sm:w-[47%] lg:w-[22%] bg-white rounded-[20px] shadow-md">
+    <div class="min-w-[250px] sm:min-w-[280px] lg:w-[22%] bg-white rounded-[20px]">
       <div class="flex items-center gap-4 p-6 rounded-xl mt-2">
         <div class="w-24 h-24 bg-[#FFF5D9] rounded-full flex items-center justify-center">
           <img src="assets/icons/loans2.svg" alt="icon" class="w-12 h-12" />
         </div>
         <div class="flex-1">
-          <h3 class="text-sm text-[#718EBF] ">Corporate Loans</h3>
+          <h3 class="text-sm text-[#718EBF]">Corporate Loans</h3>
           <p class="text-xl font-semibold mt-1">$100,000</p>
         </div>
       </div>
     </div>
 
     <!-- Kotak 3 -->
-    <div class="w-full sm:w-[47%] lg:w-[22%] bg-white rounded-[20px] shadow-md">
+    <div class="min-w-[250px] sm:min-w-[280px] lg:w-[22%] bg-white rounded-[20px] ">
       <div class="flex items-center gap-4 p-6 rounded-xl mt-2">
         <div class="w-24 h-24 bg-[#FFE0EB] rounded-full flex items-center justify-center">
           <img src="assets/icons/loans3.svg" alt="icon" class="w-12 h-12" />
@@ -134,7 +169,7 @@
     </div>
 
     <!-- Kotak 4 -->
-    <div class="w-full sm:w-[47%] lg:w-[22%] bg-white rounded-[20px] shadow-md">
+    <div class="min-w-[250px] sm:min-w-[280px] lg:w-[22%] bg-white rounded-[20px]">
       <div class="flex items-center gap-4 p-6 rounded-xl mt-2">
         <div class="w-24 h-24 bg-[#DCFAF8] rounded-full flex items-center justify-center">
           <img src="assets/icons/loans4.svg" alt="icon" class="w-12 h-12" />
@@ -145,27 +180,31 @@
         </div>
       </div>
     </div>
+
   </div>
+</div>
+
 
       <!-- Kotak Besar -->
-    <div class="w-full rounded-[20px]  p-6">
+    <div class="w-full rounded-[20px]  p-3">
         <h2 class="text-xl font-bold text-[#333B69] font-semibold mb-4">Active Loan Overview</h2>
       <div class="bg-white rounded-2xl p-8">
  <div class="overflow-x-auto">
   <table class="min-w-full table-auto border-collapse">
 <thead>
   <tr class="text-left text-sm text-[#718EBF] font-normal border-b border-gray-300">
-    <th class="px-4 py-3 font-normal">SL No</th>
+    <th class="px-4 py-3 font-normal hidden md:table-cell">SL No</th>
     <th class="px-4 py-3 font-normal">Loan Money</th>
     <th class="px-4 py-3 font-normal">Left to Repay</th>
-    <th class="px-4 py-3 font-normal">Duration</th>
-    <th class="px-4 py-3 font-normal">Interest Rate</th>
-    <th class="px-4 py-3 font-normal">Installment</th>
+    <th class="px-4 py-3 font-normal hidden md:table-cell">Duration</th>
+    <th class="px-4 py-3 font-normal hidden md:table-cell">Interest Rate</th>
+    <th class="px-4 py-3 font-normal hidden md:table-cell">Installment</th>
     <th class="px-4 py-3 font-normal">Repay</th>
   </tr>
 </thead>
 
-    <tbody id="loan-table-body" class="text-sm text-gray-700">
+
+<tbody id="loan-table-body" class="text-sm text-gray-700">
   <!-- Isi akan di-render via JS -->
 </tbody>
   </table>
@@ -179,4 +218,36 @@
       </div>
     </div>
   </body>
+  <script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("-translate-x-full");
+  }
+</script>
+
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    const isOpen = !sidebar.classList.contains("-translate-x-full");
+
+    if (isOpen) {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    } else {
+      sidebar.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    }
+  }
+
+  function closeSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  }
+</script>
+
 </html>

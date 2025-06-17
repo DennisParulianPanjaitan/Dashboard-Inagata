@@ -14,12 +14,12 @@ window.onload = () => {
 
     const row = `
       <tr class="border-b">
-        <td class="px-4 py-3">${loan.id.toString().padStart(2, '0')}.</td>
+        <td class="px-4 py-3 hidden md:table-cell">${loan.id.toString().padStart(2, '0')}.</td>
         <td class="px-4 py-3">${loan.loanMoney}</td>
         <td class="px-4 py-3">${loan.leftToRepay}</td>
-        <td class="px-4 py-3">${loan.duration}</td>
-        <td class="px-4 py-3">${loan.interestRate}</td>
-        <td class="px-4 py-3">${loan.installment}</td>
+        <td class="px-4 py-3 hidden md:table-cell">${loan.duration}</td>
+        <td class="px-4 py-3 hidden md:table-cell">${loan.interestRate}</td>
+        <td class="px-4 py-3 hidden md:table-cell">${loan.installment}</td>
         <td class="px-6 py-3">
           <button class="w-20 text-xs font-semibold px-3 py-1 rounded-full border border-black hover:border-[#1814F3] hover:text-[#1814F3] transition-colors duration-200 text-center">
             Repay
@@ -30,15 +30,15 @@ window.onload = () => {
     tbody.insertAdjacentHTML("beforeend", row);
   });
 
-  // Tambahkan baris total
+  // Tambahkan baris total (juga pakai responsive visibility)
   tbody.insertAdjacentHTML("beforeend", `
-    <tr class="text-red-500">
-      <td class="px-4 py-3">Total</td>
+    <tr class="text-red-500 font-semibold border-t">
+      <td class="px-4 py-3 hidden md:table-cell">Total</td>
       <td class="px-4 py-3">$${totalLoan.toLocaleString()}</td>
       <td class="px-4 py-3">$${totalLeft.toLocaleString()}</td>
-      <td class="px-4 py-3">–</td>
-      <td class="px-4 py-3">–</td>
-      <td class="px-4 py-3">$${totalInstallment.toLocaleString()}</td>
+      <td class="px-4 py-3 hidden md:table-cell">–</td>
+      <td class="px-4 py-3 hidden md:table-cell">–</td>
+      <td class="px-4 py-3 hidden md:table-cell">$${totalInstallment.toLocaleString()}</td>
       <td class="px-4 py-3">–</td>
     </tr>
   `);
