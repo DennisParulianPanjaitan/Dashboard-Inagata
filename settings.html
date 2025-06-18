@@ -136,10 +136,10 @@
   <button class="tab-button pb-2 border-b-2 text-[#1814F3] border-[#1814F3] font-medium" data-tab="profile">
     Edit Profile
   </button>
-  <button class="tab-button pb-2 border-b-2 border-transparent text-[#718EBF] font-medium" data-tab="security">
+  <button class="tab-button pb-2 border-b-2 border-transparent text-[#718EBF] font-medium" data-tab="preferences">
     Preferences
   </button>
-  <button class="tab-button pb-2 border-b-2 border-transparent text-[#718EBF] font-medium" data-tab="preferences">
+  <button class="tab-button pb-2 border-b-2 border-transparent text-[#718EBF] font-medium" data-tab="security">
     Security
   </button>
 </div>
@@ -314,7 +314,7 @@
 
 
   <!-- Preferences Tab -->
-<div class="tab-pane transition-all duration-300 ease-in-out opacity-0 translate-x-4 hidden" id="security">
+<div class="tab-pane hidden" id="preferences">
         
   
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 gap-x-1 max-w-4xl w-[3000px] h-[80px]">
@@ -393,7 +393,7 @@
 
 
 <!-- Security Tab -->
-<div class="tab-pane transition-all duration-300 ease-in-out opacity-0 translate-x-4 hidden" id="preferences">
+<div class="tab-pane" id="security">
 <label class="block text-[#333B69] font-medium mb-3">Two-factor Authentication</label>
 
   <!-- Toggle Switch -->
@@ -441,14 +441,8 @@
     panes.forEach(p => {
       if (p.id === targetId) {
         p.classList.remove("hidden");
-        setTimeout(() => {
-          p.classList.remove("opacity-0", "translate-x-4");
-          p.classList.add("opacity-100", "translate-x-0");
-        }, 10);
       } else {
-        p.classList.add("opacity-0", "translate-x-4");
-        p.classList.remove("opacity-100", "translate-x-0");
-        setTimeout(() => p.classList.add("hidden"), 300);
+        p.classList.add("hidden");
       }
     });
 
@@ -474,6 +468,7 @@
     activateTab(buttons[0].dataset.tab);
   });
 </script>
+
 <script>
   function previewImage(event) {
     const reader = new FileReader();

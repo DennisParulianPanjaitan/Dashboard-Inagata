@@ -411,9 +411,8 @@ const config = {
         backgroundColor: '#1814F3',
         data: [480, 340, 330, 470, 130, 390, 380],
         borderRadius: 5,
-        barThickness: 18,
-     categoryPercentage: 0.6, // ✅ Lebar total 1 grup kategori
-        barPercentage: 0.4      // Lebar kategori secara keseluruhan
+     categoryPercentage: 0.7, // ✅ Lebar total 1 grup kategori
+        barPercentage: 0.5      // Lebar kategori secara keseluruhan
 
       },
       {
@@ -421,9 +420,8 @@ const config = {
         backgroundColor: '#16DBCC',
         data: [260, 100, 270, 360, 210, 240, 310],
         borderRadius: 5,
-        barThickness: 18,
-        categoryPercentage: 0.6,
-        barPercentage: 0.4,
+        categoryPercentage: 0.7,
+        barPercentage: 0.5,
       },
     ]
   },
@@ -434,7 +432,7 @@ const config = {
       padding: {
         left: 20,
         right: 10,
-        top: 10,
+        top: 15,
         bottom: 0
       }
     },
@@ -498,7 +496,6 @@ new Chart(document.getElementById('weeklyActivityChart'), config);
 </script>
 
 
-        <!-- CHART EXPENSE -->
 <script>
   const ctx = document.getElementById('expensePieChart').getContext('2d');
 
@@ -508,8 +505,10 @@ new Chart(document.getElementById('weeklyActivityChart'), config);
       labels: ['Entertainment', 'Bill Expense', 'Investment', 'Others'],
       datasets: [{
         data: [30, 15, 20, 35],
+          backgroundColor: ['##343C6A', '#FC7900', '#FA00FF', '#1814F3'],
+        offset: [30, 15, 20, 35],  // <-- ini akan mendorong potongan ke luar
         backgroundColor: ['#2f365f', '#f97316', '#ff00ff', '#1d4ed8'],
-        borderWidth: 6,
+        
         borderColor: '#ffffff'
       }]
     },
@@ -517,16 +516,19 @@ new Chart(document.getElementById('weeklyActivityChart'), config);
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { display: false },
+        legend: {
+          display: false
+        },
         datalabels: {
           color: '#fff',
           font: {
             weight: 'bold',
             size: 12
           },
-          anchor: 'center',  // posisi relatif terhadap arc
-          align: 'center',   // posisi relatif terhadap radius
-          offset: 500,         // ubah nilai ini untuk geser label
+          anchor: 'end',    // 'center', 'start', 'end'
+          align: 'center',     // 'center', 'start', 'end'
+          offset: 8,           // ubah nilai ini untuk menjauhkan/mendekatkan label dari tengah
+          clamp: true,         // supaya label tetap terlihat walau offset besar
           formatter: (value, context) => {
             const label = context.chart.data.labels[context.dataIndex];
             return `${value}%\n${label}`;
@@ -537,6 +539,7 @@ new Chart(document.getElementById('weeklyActivityChart'), config);
     plugins: [ChartDataLabels]
   });
 </script>
+
 
 <script>
 const balanceCtx = document.getElementById('balanceChart').getContext('2d');
