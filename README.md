@@ -13,10 +13,10 @@
 ## 📸 Screenshot
 
 ### Dashboard Overview
-![Dashboard Screenshot](./assets/screenshots/dashboard.png)
+![Dashboard Screenshot](./assets/screenshoot/dashboard.png)
 
 ### Loans Page
-![Loans Screenshot](./assets/screenshots/loans.png)
+![Loans Screenshot](./assets/screenshoot/loans.png)
 
 ### Profile Settings
 ![Settings Screenshot](./assets/screenshoot/settings1.png)
